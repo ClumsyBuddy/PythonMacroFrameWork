@@ -1,7 +1,6 @@
 from pynput import keyboard, mouse
 import MouseController as _mouse
 
-
 def InitInput():
 	listener = keyboard.Listener(on_press=on_press)
 	listener.start()
@@ -16,10 +15,9 @@ def on_press(key):
 
 def HandleCharInput(key):
 	if key.char == 'e':
-		_mouse.DragMouseToFrom(100, 100, 500, 100, 1)
+		_mouse.MoveReturn(100,100)
 	if key.char == 'm':
-		PosX, PosY = _mouse.ImageSearchEntireScreen("Temp.PNG", True, 0.80)
-		print(PosY)
+		_mouse.WinClickAndReturn(100,100)
 def HandleNonCharInput(key):
 	if key == keyboard.Key.esc:
 		print("Stopping Input")

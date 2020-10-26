@@ -1,5 +1,23 @@
 import pyautogui as auto
+import win32api, win32con
+import time
+import Utility
 
+def WinClick(x,y, Speed = 0.05):
+	Speed = Utility.ClampMin(Speed, 0.05)
+	win32api.SetCursorPos((x,y))
+	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
+	time.sleep(Speed)
+	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
+
+def WinClickAndReturn(x,y, Speed = 0.05):
+	Speed = Utility.ClampMin(Speed, 0.05)
+	OldPosX, OldPosY = win32api.GetCursorPos()
+	win32api.SetCursorPos((x,y))
+	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
+	time.sleep(Speed)
+	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
+	win32api.SetCursorPos((OldPosX,OldPosY))
 
 
 
@@ -20,27 +38,8 @@ def ImageSearchEntireScreen(PathToImage, GScale, Acc):
 	return PosX, PosY
 
 def AdjustLocateImageReturnCenter(PathToImage, GScale, Left, Top, Width, Height, Acc):
-	PosX, PosY = -1, -1
-	Counter = 0
-	while PosX == -1 & PosY == -1:
-		Counter += 1
-		if Counter > 10:
-			break
-		try:
-			PosX, PosY = auto.locateCenterOnScreen(PathToImage, region=(Left, Top, Width, Height), greyscale=GScale, confidence=Acc)
-		except:
-			print("Couldn't find the Image")
-			if GScale == False:
-				GScale = True
-			if Acc > 0.60:
-				Acc -= 0.05
-			Left += 20
-			Top += 20
-			Width += 20
-			Height += 20
-		else:
-			return PosX, PosY
-		return PosX, PosY
+	ScreenX, ScreenY = auto.size()
+	PosX, PosY = auto.locateCenterOnScreen(PathToImage, region=(Left, Top, Width, Height), greyscale=GScale, confidence=Acc)
 
 
 def DragMouse(PosX, PosY, Speed = 2, _button = 'left'):
