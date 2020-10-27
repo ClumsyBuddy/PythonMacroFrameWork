@@ -19,6 +19,49 @@ def WinClickAndReturn(x,y, Speed = 0.05):
 	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
 	win32api.SetCursorPos((OldPosX,OldPosY))
 
+def WinDragTo(StartPosX, StartPosY, EndPosX, EndPosY, Speed = 1):
+	win32api.SetCursorPos((StartPosX, StartPosY))
+	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
+	DistX, DistY = (EndPosX - StartPosX), (EndPosY - StartPosY)
+	Counter = 0
+	XCheck, YCheck = False, False
+	PosX, PosY = win32api.GetCursorPos()
+	while (PosX, PosY) != (EndPosX, EndPosY):
+		Counter += 1
+		PosX, PosY = win32api.GetCursorPos()
+		XMov, YMov = 0, 0
+		if DistX != 0:
+			if DistX < 0:
+				XMov = Speed * -1
+				if PosX <= EndPosX:
+					XCheck = True
+			else:
+				XMov = Speed
+				if PosX >= EndPosX:
+					XCheck = True
+		if DistY != 0:
+			if DistY < 0:
+				YMov = Speed * -1
+				if PosY <= EndPosY:
+					YCheck = True
+			else:
+				YMov = Speed
+				if PosY >= EndPosY:
+					YCheck = True
+		if XCheck == True & YCheck == True:
+			break
+		if XCheck == True:
+			XMov = 0
+		if YCheck == True:
+			YMov = 0
+		SetX = PosX + XMov
+		SetY = PosY + YMov
+		win32api.SetCursorPos((SetX, SetY))
+		time.sleep(0.01)
+		if Counter == 3000:
+			break
+	time.sleep(0.05)
+	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
 
 
 def MoveReturn(PosX, PosY):

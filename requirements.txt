@@ -1,0 +1,5 @@
+numpy==1.19.2
+pywin32==228
+pynput==1.7.1
+PyAutoGUI==0.9.52
+PyQt5==5.15.1
