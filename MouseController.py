@@ -72,16 +72,20 @@ def MoveReturn(PosX, PosY):
 def MoveandClick(PosX, PosY):
 	auto.click(PosX, PosY)
 
-def LocateImageReturnCenter(PathToImage, GScale, Pos, Rect, Acc):
+def ScreenShotRegion(Name = 'ScreenShot', Pos = (0,0), Rect = (0,0)):
+	auto.screenshot(Name, region=(Pos[0], Pos[1], Rect[0], Rect[1]))
+
+
+def LocateImageReturnCenter(PathToImage, GScale = False, Pos = (0,0), Rect = (0,0), Acc = 1):
 	try:
-		PosX, PosY = auto.locateCenterOnScreen(PathToImage, region=(Pos.x, Pos.y, Rect.Width, Rect.Height), greyscale=GScale, confidence=Acc)
+		Pos = auto.locateOnScreen(PathToImage, region=(Pos[0], Pos[1], Rect[0], Rect[1]), greyscale=GScale, confidence=Acc)
 	except:
 		print("Couldn't find Image")
-		return -1, -1
+		return -1, -1, -1, -1
 	else:
-		return PosX, PosY
+		return Pos
 
-def ImageSearchEntireScreen(PathToImage, GScale, Acc):
+def ImageSearchEntireScreen(PathToImage, GScale = False, Acc = 1):
 	try:
 		PosX, PosY = auto.locateCenterOnScreen(PathToImage,  grayscale=GScale, confidence=Acc)
 	except:
@@ -90,7 +94,7 @@ def ImageSearchEntireScreen(PathToImage, GScale, Acc):
 	else:
 		return PosX, PosY
 
-def AdjustLocateImageReturnCenter(PathToImage, GScale, Acc):
+def AdjustLocateImageReturnCenter(PathToImage, GScale = False, Acc = 1):
 	ScreenX, ScreenY = auto.size()
 	_quadX = (ScreenX/2)
 	_quadY = (ScreenY/2)
@@ -115,3 +119,8 @@ def DragMouse(PosX, PosY, Speed = 2, _button = 'left'):
 def DragMouseToFrom(StartPosX, StartPosY, EndPosX, EndPosY, Speed = 2, _button = 'left'):
 	auto.moveTo(StartPosX, StartPosY)
 	auto.dragTo(EndPosX, EndPosY, Speed, button=_button)
+
+
+def ReturnCursorPosition():
+	CursorPos = win32api.GetCursorPos()
+	return CursorPos
