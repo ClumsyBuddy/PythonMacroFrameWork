@@ -78,7 +78,7 @@ def ScreenShotRegion(Name = 'ScreenShot', Pos = (0,0), Rect = (0,0)):
 
 def LocateImageReturnCenter(PathToImage, GScale = False, Pos = (0,0), Rect = (0,0), Acc = 1):
 	try:
-		Pos = auto.locateOnScreen(PathToImage, region=(Pos[0], Pos[1], Rect[0], Rect[1]), grayscale=GScale, confidence=Acc)
+		Pos = auto.locateCenterOnScreen(PathToImage, region=(Pos[0], Pos[1], Rect[0], Rect[1]), grayscale=GScale, confidence=Acc)
 	except:
 		print("Couldn't find Image")
 		return -1, -1, -1, -1
