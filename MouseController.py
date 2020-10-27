@@ -78,7 +78,7 @@ def ScreenShotRegion(Name = 'ScreenShot', Pos = (0,0), Rect = (0,0)):
 
 def LocateImageReturnCenter(PathToImage, GScale = False, Pos = (0,0), Rect = (0,0), Acc = 1):
 	try:
-		Pos = auto.locateOnScreen(PathToImage, region=(Pos[0], Pos[1], Rect[0], Rect[1]), greyscale=GScale, confidence=Acc)
+		Pos = auto.locateOnScreen(PathToImage, region=(Pos[0], Pos[1], Rect[0], Rect[1]), grayscale=GScale, confidence=Acc)
 	except:
 		print("Couldn't find Image")
 		return -1, -1, -1, -1
@@ -95,21 +95,7 @@ def ImageSearchEntireScreen(PathToImage, GScale = False, Acc = 1):
 		return PosX, PosY
 
 def AdjustLocateImageReturnCenter(PathToImage, GScale = False, Acc = 1):
-	ScreenX, ScreenY = auto.size()
-	_quadX = (ScreenX/2)
-	_quadY = (ScreenY/2)
-	Quad1 = ([0, _quadX, 0, _quadX],[ 0, 0, _quadY, _quadY])
-	Quad2 = [(ScreenX/2), (ScreenY/2)]
-	print(Quad1)
-	ExitLoop = False
-	while ExitLoop == False:
-		for i in range(0, 4, 1):
-			Location = auto.locateCenterOnScreen(PathToImage, region=(0, 0, ScreenX, ScreenY), greyscale=GScale, confidence=Acc)
-			if Location == auto.ImageNotFoundException:
-				ScreenX = ScreenX / 2
-				ScreenY = ScreenY / 2
-		if i == 4:
-			ExitLoop = True
+	None #Wip Function, Locate Image and slowly zoom in to find a small region
 
 
 

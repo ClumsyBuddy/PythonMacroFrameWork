@@ -23,10 +23,10 @@ def HandleCharInput(key):
 		PosX, PosY = _mouse.ImageSearchEntireScreen("Temp.PNG", True, 0.80)
 		print(PosX, PosX)
 	if key.char == 'i':
-		Pos =  _mouse.LocateImageReturnCenter("Temp.PNG", True, (0,0), (75,75), 0.80)
+		Pos =  _mouse.LocateImageReturnCenter("Temp.PNG", True, (0,0), (75,75), 0.50)
 		print(Pos)
 	if key.char == 'o':
-		_mouse.ScreenShotRegion("Test.PNG", (0,0), (75,75))
+		_mouse.ScreenShotRegion("Test.PNG", (0,0), (500,500))
 
 def HandleNonCharInput(key):
 	if key == keyboard.Key.esc:
