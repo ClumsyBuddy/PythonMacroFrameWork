@@ -4,3 +4,7 @@ Use PostMessage to send input to a non active window
 
 Create A Automation Section and create a method to get booleans from Input file
 Need to learn how to use threads to create other classes and utilize background logic
+
+
+rewrite code to use threads to add more functionality, need a loop to check logic, need signals to pass variables between
+threads

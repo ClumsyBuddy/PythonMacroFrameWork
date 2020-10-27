@@ -3,6 +3,7 @@ import win32api, win32con
 import time
 import Utility
 
+
 def WinClick(x,y, Speed = 0.05):
 	Speed = Utility.ClampMin(Speed, 0.05)
 	win32api.SetCursorPos((x,y))
