@@ -15,10 +15,17 @@ def on_press(key):
 
 def HandleCharInput(key):
 	if key.char == 'e':
-		_mouse.MoveReturn(100,100)
+		PosX, PosY = _mouse.ImageSearchEntireScreen("Temp.PNG", True, 0.80)
 	if key.char == 'm':
 		_mouse.WinClickAndReturn(100,100)
 def HandleNonCharInput(key):
 	if key == keyboard.Key.esc:
 		print("Stopping Input")
 		return False
+
+
+def CheckReturnedPos((PosX, PosY)):
+	if PosX != -1 & PosY != -1:
+		return False
+	else:
+		return True
