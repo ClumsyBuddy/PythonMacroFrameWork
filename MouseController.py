@@ -72,40 +72,12 @@ def MoveReturn(PosX, PosY):
 def MoveandClick(PosX, PosY):
 	auto.click(PosX, PosY)
 
-def ScreenShotRegion(Name = 'ScreenShot', Pos = (0,0), Rect = (0,0)):
-	auto.screenshot(Name, region=(Pos[0], Pos[1], Rect[0], Rect[1]))
-
-
-def LocateImageReturnCenter(PathToImage, GScale = False, Pos = (0,0), Rect = (0,0), Acc = 1):
-	try:
-		Pos = auto.locateCenterOnScreen(PathToImage, region=(Pos[0], Pos[1], Rect[0], Rect[1]), grayscale=GScale, confidence=Acc)
-	except:
-		print("Couldn't find Image")
-		return -1, -1, -1, -1
-	else:
-		return Pos
-
-def ImageSearchEntireScreen(PathToImage, GScale = False, Acc = 1):
-	try:
-		PosX, PosY = auto.locateCenterOnScreen(PathToImage,  grayscale=GScale, confidence=Acc)
-	except:
-		print("Couldn't find Image")
-		return -1, -1
-	else:
-		return PosX, PosY
-
-def AdjustLocateImageReturnCenter(PathToImage, GScale = False, Acc = 1):
-	None #Wip Function, Locate Image and slowly zoom in to find a small region
-
-
-
 def DragMouse(PosX, PosY, Speed = 2, _button = 'left'):
 	auto.dragTo(PosX, PosY, Speed, button=_button)
 
 def DragMouseToFrom(StartPosX, StartPosY, EndPosX, EndPosY, Speed = 2, _button = 'left'):
 	auto.moveTo(StartPosX, StartPosY)
 	auto.dragTo(EndPosX, EndPosY, Speed, button=_button)
-
 
 def ReturnCursorPosition():
 	CursorPos = win32api.GetCursorPos()

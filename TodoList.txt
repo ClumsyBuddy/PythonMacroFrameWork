@@ -1,2 +1,6 @@
 Use PostMessage and SendMessage to create a Key sending frame
 Use PostMessage to send input to a non active window
+
+
+Create A Automation Section and create a method to get booleans from Input file
+Need to learn how to use threads to create other classes and utilize background logic

@@ -1,5 +1,8 @@
 from pynput import keyboard, mouse
 import MouseController as _mouse
+import Utility as utility
+import time
+
 
 def InitInput():
 	listener = keyboard.Listener(on_press=on_press)
@@ -18,15 +21,13 @@ def on_press(key):
 def HandleCharInput(key):
 	global ClickPosX, ClickPosY
 	if key.char == 'e':
-		_mouse.WinDragTo(300, 200, 600, 200, 4)
+		None
 	if key.char == 'm':
-		PosX, PosY = _mouse.ImageSearchEntireScreen("Temp.PNG", True, 0.80)
-		print(PosX, PosX)
+		None
 	if key.char == 'i':
-		Pos =  _mouse.LocateImageReturnCenter("Temp.PNG", True, (0,0), (75,75), 0.50)
-		print(Pos)
+		None
 	if key.char == 'o':
-		_mouse.ScreenShotRegion("Test.PNG", (0,0), (500,500))
+		None
 
 def HandleNonCharInput(key):
 	if key == keyboard.Key.esc:
