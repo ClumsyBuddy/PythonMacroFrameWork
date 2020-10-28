@@ -28,7 +28,8 @@ class Input_Handler():
 
 		#If the key is a key to be held down then send it to the KeyHeldDown Function
 		for Held in range(len(self.HeldKeys)):
-			self.KeyHeldDown(self.HeldKeys[Held])
+			if self.CheckForKeyPress(self.HeldKeys[Held]):
+				self.KeyHeldDown(self.HeldKeys[Held])
 
 		#the Keybool is to make sure a key doesnt get clicked repeatedly
 		for Key in range(len(self.CharKeys)):
@@ -43,8 +44,10 @@ class Input_Handler():
 
 	#Function to handle keys that are excepted to be held down
 	def KeyHeldDown(self, CurrentKey):
-		if self.CheckForKeyPress(CurrentKey) and CurrentKey == 'esc':
+		if CurrentKey == 'esc':
 			self.StopInput = True
+		if CurrentKey == 'o':
+			print("Holding " + CurrentKey)
 
 	#Logic after knowning which key has been pressed
 	def PostKeyPress(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
