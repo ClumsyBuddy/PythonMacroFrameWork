@@ -1,10 +1,12 @@
 Use PostMessage and SendMessage to create a Key sending frame
 Use PostMessage to send input to a non active window
+^^ Zack Requested this
 
+Create A Automation Section
 
-Create A Automation Section and create a method to get booleans from Input file
-Need to learn how to use threads to create other classes and utilize background logic
+Need Signals between threads
 
+Correct __del__ function so that it doesnt cause problems anymore
 
-rewrite code to use threads to add more functionality, need a loop to check logic, need signals to pass variables between
-threads
+Currently doing:
+Adding the ability to get a get constantly being pressed down as current input handling doesnt support it

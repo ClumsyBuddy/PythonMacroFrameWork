@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
 from PyQt5 import QtCore
 import ButtonGui as _button
 import InputHandler
-
 #pyQt5 gui
 #CReates a thread so other threads must be created here to perform loop logic
 class AppGUI(QWidget):
@@ -53,6 +52,7 @@ class LogicThread(QtCore.QThread):
         self.ExitMainLoop = False
         print("Run Function")
         self.MainLoop()
+        return
     #MainLoop where everything that needs to be looped will be put
     def MainLoop(self):
         while self.ExitMainLoop == False:
@@ -60,8 +60,8 @@ class LogicThread(QtCore.QThread):
             self._input.HandleInput() #Go to inputhandler to handle all of our input needs
         print("Input Has Been Stopped")
 
-    def __del__(self): #Close thread fuinction, waits for thread to finish before closing it out
-        self.wait()
+    #def __del__(self): #Close thread fuinction, waits for thread to finish before closing it out
+    #    self.wait() #This function seems to be causing problems --------------------------
         
 #Just little function to Init the gui. Dont know why I put it here. Might move this to main()
 def initHandler():
