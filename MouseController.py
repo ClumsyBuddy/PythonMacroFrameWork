@@ -3,7 +3,8 @@ import win32api, win32con
 import time
 import Utility
 
-
+#Clamp the speed so it wont be udner 0.05 because any lower and clicks might not register
+#Set the cursor position to the desired location and then Mouse down and then mouse up aka Click
 def WinClick(x,y, Speed = 0.05):
 	Speed = Utility.ClampMin(Speed, 0.05)
 	win32api.SetCursorPos((x,y))
@@ -11,15 +12,22 @@ def WinClick(x,y, Speed = 0.05):
 	time.sleep(Speed)
 	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
 
+#Clamp the position then get the current cursor position. Then perform winclick and return to previous position
+#Otherwise this is a wrapper for WinClick
 def WinClickAndReturn(x,y, Speed = 0.05):
 	Speed = Utility.ClampMin(Speed, 0.05)
 	OldPosX, OldPosY = win32api.GetCursorPos()
-	win32api.SetCursorPos((x,y))
-	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
-	time.sleep(Speed)
-	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
+	WinClick(x,y,Speed)
 	win32api.SetCursorPos((OldPosX,OldPosY))
 
+
+#This was annoying to make
+#Set the cursor to the target position, then perform mouse down
+#Get the distance between the Start position of the click the the end position
+#Create checks to see if it has reached the end position of the X or Y Axis
+#if it has reach the endpos then stop moving that axis
+#inside the while loop we are checking if it is forwards or backwards aka going -1 or 1
+#it will constantly move the cursor until it has reached or gone past the Endpos
 def WinDragTo(StartPosX, StartPosY, EndPosX, EndPosY, Speed = 1):
 	win32api.SetCursorPos((StartPosX, StartPosY))
 	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)

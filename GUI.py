@@ -46,10 +46,7 @@ class LogicThread(QtCore.QThread):
         QtCore.QThread.__init__(self)
         self.ExitMainLoop = None
         self._input = InputHandler.Input_Handler()
-        self.MainLoop()
-    def __del__():
-        self.wait()
-
+    
     def run(self):
         self.ExitMainLoop = False
         print("Run Function")
@@ -57,10 +54,12 @@ class LogicThread(QtCore.QThread):
 
     def MainLoop(self):
         while self.ExitMainLoop == False:
-            print("In MainLoop")
-            self.ExitMainLoop = InputHandler.TempInput()
-        print("Exiting MainLoop")
+            self.ExitMainLoop = self._input.ContinueInput()
+            self._input.HandleInput()
+        print("Input Has Been Stopped")
 
+    def __del__(self):
+        self.wait()
         
 
 def initHandler():
@@ -69,8 +68,6 @@ def initHandler():
     sys.exit(app.exec_())
 
 
-def Printout():
-    print("Hello")
 
 
 
