@@ -72,22 +72,22 @@ def WinDragTo(StartPosX, StartPosY, EndPosX, EndPosY, Speed = 1):
 	time.sleep(0.05)
 	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
 
-
+#Use pyautogui to Move the mouse and return to old position
 def MoveReturn(PosX, PosY):
 	OldPosX, OldPosY = auto.position()
 	auto.click(PosX, PosY)
 	auto.moveTo(OldPosX, OldPosY)
-
+#use pyautogui to Click a position on screen
 def MoveandClick(PosX, PosY):
 	auto.click(PosX, PosY)
-
+#use pyautogui to Drag the mouse form where ever your mouse currently is
 def DragMouse(PosX, PosY, Speed = 2, _button = 'left'):
 	auto.dragTo(PosX, PosY, Speed, button=_button)
-
+#use pyautogui to drag mouse from a point to another point
 def DragMouseToFrom(StartPosX, StartPosY, EndPosX, EndPosY, Speed = 2, _button = 'left'):
 	auto.moveTo(StartPosX, StartPosY)
 	auto.dragTo(EndPosX, EndPosY, Speed, button=_button)
-
+#Get the cursor position
 def ReturnCursorPosition():
 	CursorPos = win32api.GetCursorPos()
 	return CursorPos

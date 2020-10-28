@@ -5,6 +5,7 @@ import time
 import keyboard as _keyboard
 from Utility import MyKeys
 
+#This class Handles all of the input. WIP I want to add more functionality
 class Input_Handler():
 	def __init__(self):
 		self.MousePos = 0
