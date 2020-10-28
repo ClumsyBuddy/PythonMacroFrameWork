@@ -1,4 +1,3 @@
-from pynput import keyboard, mouse
 import MouseController as _mouse
 import Utility as utility
 import time
