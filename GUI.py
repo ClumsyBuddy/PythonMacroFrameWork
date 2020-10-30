@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
 from PyQt5 import QtCore
 import ButtonGui as _button
 import InputHandler
+import MouseController as _mouse
 #pyQt5 gui
 #CReates a thread so other threads must be created here to perform loop logic
 class AppGUI(QWidget):
@@ -47,11 +48,10 @@ class LogicThread(QtCore.QThread):
         QtCore.QThread.__init__(self)
         self.ExitMainLoop = None
         self._input = InputHandler.Input_Handler()
-        self.KeyToggles = []
-        self.CharKeys = []
     #This get run first, anything that needs to be initialized can be put in here
     def run(self):
         self.ExitMainLoop = False
+        self.MousePos = (0,0,0,0)
         print("Run Function")
         self.MainLoop()
         return
@@ -60,19 +60,8 @@ class LogicThread(QtCore.QThread):
         while self.ExitMainLoop == False:
             self.ExitMainLoop = self._input.ContinueInput() #Check if input should be continued
             self._input.HandleInput() #Go to inputhandler to handle all of our input needs
-            self.KeyToggles = self._input.ReturnKeyToggles()
-            self.CharKeys = self._input.ReturnKeyChar()
-            self.KeyToggleLogic()
+            self._input.KeyToggleLogic()
         print("Input Has Been Stopped")
-
-
-    def KeyToggleLogic(self):
-        for Keys in range(len(self.KeyToggles)):
-            if self.KeyToggles[Keys]:
-                if self.CharKeys[Keys] == 'e':
-                    print("Doing E Logic")
-                if self.CharKeys[Keys] == 'i':
-                    print("Doing I logic")
 
     #def __del__(self): #Close thread fuinction, waits for thread to finish before closing it out
     #    self.wait() #This function seems to be causing problems --------------------------

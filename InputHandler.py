@@ -12,7 +12,7 @@ class Input_Handler():
 		self.KeyBool = []
 		self.KeyToggles = []
 		self.InitInput()
-
+		self.MousePos = [0,0,0,0]
 		#Initialize the Keybool with the amount of keys int he Key Char list
 	def InitInput(self):
 		for Key in range(len(self.CharKeys)):
@@ -60,7 +60,8 @@ class Input_Handler():
 		if CurrentKey == 'e':
 			pass
 		if CurrentKey == 'i':
-			pass
+			self.TakeAScreenShot()
+
 
  	#Simple functino that checks if the key has been pressed
 	def CheckForKeyPress(self, Key):
@@ -75,13 +76,31 @@ class Input_Handler():
 			return False
 		else:
 			return True
-	def ReturnKeyToggles(self):
-		return self.KeyToggles
-	def ReturnKeyChar(self):
 		return self.CharKeys
 	#Simeple get function for StopInput to let the Logicthread know if its time to break for input loop
 	def ContinueInput(self):
 		return self.StopInput
+
+	def KeyToggleLogic(self):
+		for Key in range(len(self.KeyToggles)):
+			if self.KeyToggles[Key]:
+				if self.CharKeys[Key] == 'e':
+					self.GetMousePos(Key)
+				if self.CharKeys[Key] == 'i':
+					pass
+
+	def TakeAScreenShot(self):
+		try:
+			utility.ScreenShotRegion("MouseScreenShot.PNG", (self.MousePos[0], self.MousePos[1]), (self.MousePos[2], self.MousePos[3]))
+		except:
+			print("No Mouse Coords to get screen shot")
+
+	def GetMousePos(self, Key):
+		self.MousePos = list(_mouse.ReturnCursorPosition() + (100, 100))
+		self.MousePos[0] -= 50
+		self.MousePos[1] -= 50
+		print(self.MousePos)
+
 
 	#Not being used but a InputTimer, basic counter used to check how long a key was pressed. Might delete
 class InputTimer():
