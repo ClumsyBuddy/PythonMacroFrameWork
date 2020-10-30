@@ -12,7 +12,7 @@ class Input_Handler():
 		self.KeyBool = []
 		self.KeyToggles = []
 		self.InitInput()
-		self.MousePos = [0,0,0,0]
+		self.MousePos = []
 		#Initialize the Keybool with the amount of keys int he Key Char list
 	def InitInput(self):
 		for Key in range(len(self.CharKeys)):
@@ -91,15 +91,17 @@ class Input_Handler():
 
 	def TakeAScreenShot(self):
 		try:
-			utility.ScreenShotRegion("MouseScreenShot.PNG", (self.MousePos[0], self.MousePos[1]), (self.MousePos[2], self.MousePos[3]))
+			print(self.MousePos)
+			utility.ScreenShotRegion("MouseScreenShot.PNG", self.MousePos)
 		except:
 			print("No Mouse Coords to get screen shot")
 
 	def GetMousePos(self, Key):
-		self.MousePos = list(_mouse.ReturnCursorPosition() + (100, 100))
-		self.MousePos[0] -= 50
-		self.MousePos[1] -= 50
-		print(self.MousePos)
+		self.MousePos = (list(_mouse.ReturnCursorPosition() + (100, 100)))
+		#self.MousePos.append(list([0,0,0,0]))
+		self.MousePos[0] = self.MousePos[0] - 50
+		self.MousePos[1] = self.MousePos[1] - 50
+		#print(self.MousePos[0])
 
 
 	#Not being used but a InputTimer, basic counter used to check how long a key was pressed. Might delete

@@ -27,8 +27,8 @@ def IsWindowFocused(Name = ""):
 		return False
 
 #Take a screenshot of the Region and give it a default name or name provided
-def ScreenShotRegion(Name = 'ScreenShot', Pos = (0,0), Rect = (auto.size())):
-	auto.screenshot(Name, region=(Pos[0], Pos[1], Rect[0], Rect[1]))
+def ScreenShotRegion(Name = 'ScreenShot', Pos = (0,0, 0,0)):
+	auto.screenshot(Name, region=(Pos[0], Pos[1], Pos[2], Pos[3]))
 
 
 #Search the region for the image given, Basically ImageSearchFunction but in a region

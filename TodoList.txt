@@ -6,7 +6,6 @@ Create A Automation Section
 
 Need Signals between threads
 
-Correct __del__ function so that it doesnt cause problems anymore
+Just removed __del__, Havent seen any problems since
 
 Currently doing:
-Adding the ability to get a get constantly being pressed down as current input handling doesnt support it

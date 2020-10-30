@@ -51,7 +51,6 @@ class LogicThread(QtCore.QThread):
     #This get run first, anything that needs to be initialized can be put in here
     def run(self):
         self.ExitMainLoop = False
-        self.MousePos = (0,0,0,0)
         print("Run Function")
         self.MainLoop()
         return
