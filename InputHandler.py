@@ -54,13 +54,13 @@ class Input_Handler():
 		if CurrentKey == 'e':
 			self.KeyToggles[t] = not self.KeyToggles[t]
 		if CurrentKey == 'i':
-			PrintCurrentKey(CurrentKey, True)
+			self.KeyToggles[t] = not self.KeyToggles[t]
 
 	def PostKeyRelease(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
 		if CurrentKey == 'e':
-			PrintCurrentKey(CurrentKey, False)
+			pass
 		if CurrentKey == 'i':
-			PrintCurrentKey(CurrentKey, False)
+			pass
 
  	#Simple functino that checks if the key has been pressed
 	def CheckForKeyPress(self, Key):
@@ -75,7 +75,10 @@ class Input_Handler():
 			return False
 		else:
 			return True
-
+	def ReturnKeyToggles(self):
+		return self.KeyToggles
+	def ReturnKeyChar(self):
+		return self.CharKeys
 	#Simeple get function for StopInput to let the Logicthread know if its time to break for input loop
 	def ContinueInput(self):
 		return self.StopInput
