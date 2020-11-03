@@ -1,7 +1,7 @@
-keyboard==0.13.5
-mouse==0.7.1
-PyAutoGUI==0.9.52
-numpy==1.19.1
-pywin32==228
-PyQt5==5.15.1
-win32gui==221.6
+keyboard
+mouse
+PyAutoGUI
+numpy
+pywin32
+PyQt5
+win32gui

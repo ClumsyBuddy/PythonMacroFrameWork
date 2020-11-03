@@ -3,7 +3,7 @@ import Utility as utility
 import time
 import keyboard as _keyboard
 
-#This class Handles all of the input. WIP I want to add more functionality
+##This class Handles all of the input. WIP I want to add more functionality
 class Input_Handler():
 	def __init__(self):
 		self.StopInput = False
@@ -13,7 +13,7 @@ class Input_Handler():
 		self.KeyToggles = []
 		self.InitInput()
 		self.MousePos = []
-		#Initialize the Keybool with the amount of keys int he Key Char list
+#Initialize the Keybool with the amount of keys int he Key Char list
 	def InitInput(self):
 		for Key in range(len(self.CharKeys)):
 			self.KeyBool.append(False)
@@ -65,7 +65,7 @@ class Input_Handler():
 			pass
 
 
- 	#Simple functino that checks if the key has been pressed
+#Simple functino that checks if the key has been pressed
 	def CheckForKeyPress(self, Key):
 		if _keyboard.is_pressed(Key):
 			return True
@@ -105,8 +105,12 @@ class Input_Handler():
 		self.MousePos[1] = self.MousePos[1] - 50
 		#print(self.MousePos[0])
 
+class InputLogic():
+	__init__:
+		self.MousePosition = 0,0
+		self.MouseRect = 0,0
 
-	#Not being used but a InputTimer, basic counter used to check how long a key was pressed. Might delete
+#Not being used but a InputTimer, basic counter used to check how long a key was pressed. Might delete
 class InputTimer():
 	def __init__(self, MaxTime = 0, MinTime = 0):
 		self.Time = 0
@@ -119,8 +123,6 @@ class InputTimer():
 		if self.Time == self.MaxTime:
 			self.Time = self.MinTime
 		self.Time += 1
-
-
 
 #Just used to debug my key presses
 def PrintCurrentKey(Key, Pressed):
