@@ -18,7 +18,6 @@ def SendClickToWindow(x, y, Window = None, Speed = 0.05):
 		lParama = win32api.MAKELONG(x,y)
 		print("Before After MakeLong: " + str(lParama))
 		win32gui.PostMessage(hWnd, win32con.WM_MOUSEMOVE, lParama)
-		win32con.WM_NCHITTEST
 		win32gui.PostMessage(hWnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, lParama)
 		time.sleep(Speed)
 		win32gui.PostMessage(hWnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, lParama)

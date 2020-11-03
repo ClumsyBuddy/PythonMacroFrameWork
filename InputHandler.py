@@ -91,20 +91,6 @@ class Input_Handler():
 				if self.CharKeys[Key] == 'i':
 					pass
 
-	def TakeAScreenShot(self):
-		try:
-			print(self.MousePos)
-			utility.ScreenShotRegion("MouseScreenShot.PNG", self.MousePos)
-		except:
-			print("No Mouse Coords to get screen shot")
-
-	def GetMousePos(self, Key):
-		self.MousePos = (list(_mouse.ReturnCursorPosition() + (100, 100)))
-		#self.MousePos.append(list([0,0,0,0]))
-		self.MousePos[0] = self.MousePos[0] - 50
-		self.MousePos[1] = self.MousePos[1] - 50
-		#print(self.MousePos[0])
-
 class InputLogic():
 	__init__:
 		self.MousePosition = 0,0
