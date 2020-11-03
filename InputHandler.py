@@ -24,8 +24,6 @@ class Input_Handler():
 		#if the key has been pressed and then released perform a PostKeyRelease Action with the key
 		#if the key is Esc thats used for closing input
 	def HandleInput(self):
-		
-
 		#If the key is a key to be held down then send it to the KeyHeldDown Function
 		for Held in range(len(self.HeldKeys)):
 			if self.CheckForKeyPress(self.HeldKeys[Held]):
@@ -52,15 +50,19 @@ class Input_Handler():
 	#Logic after knowning which key has been pressed
 	def PostKeyPress(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
 		if CurrentKey == 'e':
-			self.KeyToggles[t] = not self.KeyToggles[t]
+			#self.KeyToggles[t] = not self.KeyToggles[t]
+			_mouse.SendClickToWindow(self.MousePos[0], self.MousePos[1], 'Among Us')
 		if CurrentKey == 'i':
-			self.KeyToggles[t] = not self.KeyToggles[t]
+			#self.KeyToggles[t] = not self.KeyToggles[t]
+			self.MousePos = list(_mouse.ReturnCursorPosition())
+			print(self.MousePos)
 
 	def PostKeyRelease(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
 		if CurrentKey == 'e':
 			pass
 		if CurrentKey == 'i':
-			self.TakeAScreenShot()
+			#self.TakeAScreenShot()
+			pass
 
 
  	#Simple functino that checks if the key has been pressed

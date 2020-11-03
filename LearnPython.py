@@ -1,6 +1,5 @@
 from GUI import initHandler
 
-
 def main():
     gui = initHandler()
 

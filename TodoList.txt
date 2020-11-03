@@ -1,11 +1,11 @@
+
+
+Need Signals between threads
+
+
+Currently doing:
 Use PostMessage and SendMessage to create a Key sending frame
 Use PostMessage to send input to a non active window
 ^^ Zack Requested this
 
-Create A Automation Section
-
-Need Signals between threads
-
-Just removed __del__, Havent seen any problems since
-
-Currently doing:
+Create A Automation Section: Pressing keyboard keys, send mouse clicks. Do with postmessage and sendmessage

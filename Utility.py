@@ -26,6 +26,13 @@ def IsWindowFocused(Name = ""):
 	else:
 		return False
 
+def ReturnXY(List):
+	return List[0], List[1]
+
+
+
+
+
 #Take a screenshot of the Region and give it a default name or name provided
 def ScreenShotRegion(Name = 'ScreenShot', Pos = (0,0, 0,0)):
 	auto.screenshot(Name, region=(Pos[0], Pos[1], Pos[2], Pos[3]))

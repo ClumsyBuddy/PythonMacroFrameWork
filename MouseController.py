@@ -1,7 +1,31 @@
 import pyautogui as auto
-import win32api, win32con
+import win32api, win32con, win32gui
 import time
 import Utility
+
+
+#Needs to be redone
+def SendClickToWindow(x, y, Window = None, Speed = 0.05):
+	try:
+		hWnd = win32gui.FindWindowEx(0, 0, None, Window)
+	except:
+		print("Couldn't Find the window")
+	else:
+		print("Window: " + str(hWnd))
+		print("Before ScreenToClient: " + str(x), str(y))
+		(x,y) = win32gui.ScreenToClient(hWnd, (x,y))
+		print("Before AfterScreenToClient: " + str(x), str(y))
+		lParama = win32api.MAKELONG(x,y)
+		print("Before After MakeLong: " + str(lParama))
+		win32gui.PostMessage(hWnd, win32con.WM_MOUSEMOVE, lParama)
+		win32con.WM_NCHITTEST
+		win32gui.PostMessage(hWnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, lParama)
+		time.sleep(Speed)
+		win32gui.PostMessage(hWnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, lParama)
+
+		print("Clicked " + str(x), str(y))
+
+
 
 #Clamp the speed so it wont be udner 0.05 because any lower and clicks might not register
 #Set the cursor position to the desired location and then Mouse down and then mouse up aka Click
