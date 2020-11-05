@@ -1,4 +1,5 @@
 import MouseController as _mouse
+import KeyBoardController as _KeyboardController
 import Utility as utility
 import time
 import keyboard as _keyboard
@@ -82,12 +83,13 @@ class Input_Handler():
 	#Simeple get function for StopInput to let the Logicthread know if its time to break for input loop
 	def ContinueInput(self):
 		return self.StopInput
-
+	#Temp function to handle Toggle Logic
 	def KeyToggleLogic(self):
 		for Key in range(len(self.KeyToggles)):
 			if self.KeyToggles[Key]:
 				if self.CharKeys[Key] == 'e':
-					print("Looping E Key")
+					#print("Looping E Key")
+					print(_KeyboardController.char2key('e'))
 				if self.CharKeys[Key] == 'i':
 					pass
 

@@ -7,18 +7,8 @@ from ctypes import windll
 
 #Take a char key and translate it to a windows keycode
 def char2key(c):
-    # https://msdn.microsoft.com/en-us/library/windows/desktop/ms646329(v=vs.85).aspx
-    result = windll.User32.VkKeyScanW(ord(unicode(c)))
-    shift_state = (result & 0xFF00) >> 8
-    vk_key = result & 0xFF
-
-    return vk_key
-
-
-
-def WindowKeyCodesFromKeys(Key):
-	pass
-
+   vk_key = win32api.VkKeyScan(c)
+   return hex(vk_key) 
 
 #Send a key to a window via windows apli
 def SendKeyToWindow(Key, Speed):
