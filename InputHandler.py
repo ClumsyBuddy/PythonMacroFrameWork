@@ -50,8 +50,8 @@ class Input_Handler():
 	#Logic after knowning which key has been pressed
 	def PostKeyPress(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
 		if CurrentKey == 'e':
-			#self.KeyToggles[t] = not self.KeyToggles[t]
-			_mouse.SendClickToWindow(self.MousePos[0], self.MousePos[1], 'Among Us')
+			self.KeyToggles[t] = not self.KeyToggles[t]
+			#_mouse.SendClickToWindow(self.MousePos[0], self.MousePos[1], 'Among Us')
 		if CurrentKey == 'i':
 			#self.KeyToggles[t] = not self.KeyToggles[t]
 			self.MousePos = list(_mouse.ReturnCursorPosition())
@@ -87,12 +87,12 @@ class Input_Handler():
 		for Key in range(len(self.KeyToggles)):
 			if self.KeyToggles[Key]:
 				if self.CharKeys[Key] == 'e':
-					self.GetMousePos(Key)
+					print("Looping E Key")
 				if self.CharKeys[Key] == 'i':
 					pass
 
 class InputLogic():
-	__init__:
+	def __init__():
 		self.MousePosition = 0,0
 		self.MouseRect = 0,0
 

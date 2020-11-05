@@ -1,3 +1,6 @@
+HUGE REWORK:
+Rework all none game specific code into modules to use in multiple macros so specific macro scripts can be made using the framework
+
 
 
 Need Signals between threads

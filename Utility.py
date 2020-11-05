@@ -1,8 +1,6 @@
 import numpy as np
 from win32gui import GetWindowText, GetForegroundWindow
 import pyautogui as auto
-from enum import Enum
-
 
 #Clamp to keep something from going under the min Val
 def ClampMin(Val, Min):
