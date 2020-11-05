@@ -2,13 +2,12 @@ HUGE REWORK:
 Rework all none game specific code into modules to use in multiple macros so specific macro scripts can be made using the framework
 
 
+Post Message doesnt work on most windows, need to find a solution
 
 Need Signals between threads
 
 
 Currently doing:
-Use PostMessage and SendMessage to create a Key sending frame
-Use PostMessage to send input to a non active window
-^^ Zack Requested this
-
-Create A Automation Section: Pressing keyboard keys, send mouse clicks. Do with postmessage and sendmessage
+Add keyboard input sending
+create timer based clicking so it doesnt send 1000 clicks in a second
+Start updating UI
