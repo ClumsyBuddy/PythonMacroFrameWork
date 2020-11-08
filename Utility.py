@@ -29,11 +29,25 @@ def ReturnXY(List):
 
 
 
+def FindPixelRGB(Color):
+	auto.FindPixelRGB(Color)
 
 
 #Take a screenshot of the Region and give it a default name or name provided
 def ScreenShotRegion(Name = 'ScreenShot', Pos = (0,0, 0,0)):
 	auto.screenshot(Name, region=(Pos[0], Pos[1], Pos[2], Pos[3]))
+
+def LocateAmountOfImageOnScreen(PathToImage, GScale = False, Pos = (0,0), Rect = (0,0), Acc = 1):
+	ReturnPos = []
+	try:
+		for Pos in auto.locateAllOnScreen(PathToImage):
+			ReturnPos.append(Pos)
+	except:
+		print("Couldn't find Image")
+		return None
+	else:
+		return ReturnPos
+
 
 
 #Search the region for the image given, Basically ImageSearchFunction but in a region

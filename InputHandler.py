@@ -3,6 +3,7 @@ import KeyBoardController as _KeyboardController
 import Utility as utility
 import time
 import keyboard as _keyboard
+import random
 
 ##This class Handles all of the input. WIP I want to add more functionality
 class Input_Handler():
@@ -14,6 +15,7 @@ class Input_Handler():
 		self.KeyToggles = []
 		self.InitInput()
 		self.MousePos = []
+		self.TempCounter = 0
 #Initialize the Keybool with the amount of keys int he Key Char list
 	def InitInput(self):
 		for Key in range(len(self.CharKeys)):
@@ -51,12 +53,13 @@ class Input_Handler():
 	#Logic after knowning which key has been pressed
 	def PostKeyPress(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
 		if CurrentKey == 'e':
-			self.KeyToggles[t] = not self.KeyToggles[t]
-			#_mouse.SendClickToWindow(self.MousePos[0], self.MousePos[1], 'Among Us')
-		if CurrentKey == 'i':
 			#self.KeyToggles[t] = not self.KeyToggles[t]
-			self.MousePos = list(_mouse.ReturnCursorPosition())
+			self.MousePos.append(_mouse.ReturnCursorPosition())
 			print(self.MousePos)
+		if CurrentKey == 'i':
+			self.KeyToggles[t] = not self.KeyToggles[t]
+			#self.MousePos = list(_mouse.ReturnCursorPosition())
+			#print(self.MousePos)
 
 	def PostKeyRelease(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
 		if CurrentKey == 'e':
@@ -91,7 +94,13 @@ class Input_Handler():
 					#print("Looping E Key")
 					print(_KeyboardController.char2key('e'))
 				if self.CharKeys[Key] == 'i':
-					pass
+					time.sleep(.50)
+					Pos = utility.LocateAmountOfImageOnScreen('CopperOre.PNG')
+					if len(Pos) == 27:
+						pass
+					else:
+						rand = random
+					#_mouse.WinClickAndReturn(Pos[0], Pos[1])
 
 class InputLogic():
 	def __init__():
