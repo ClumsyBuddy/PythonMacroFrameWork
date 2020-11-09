@@ -103,24 +103,6 @@ class Input_Handler():
 						rand = random
 					#_mouse.WinClickAndReturn(Pos[0], Pos[1])
 
-class InputLogic():
-	def __init__():
-		self.MousePosition = 0,0
-		self.MouseRect = 0,0
-
-#Not being used but a InputTimer, basic counter used to check how long a key was pressed. Might delete
-class InputTimer():
-	def __init__(self, MaxTime = 0, MinTime = 0):
-		self.Time = 0
-		self.StartTimer = False
-		self.MaxTime = MaxTime
-		self.MinTime = MinTime
-	def Start_Timer(self):
-		self.StartTimer = True
-	def Update_Timer(self):
-		if self.Time == self.MaxTime:
-			self.Time = self.MinTime
-		self.Time += 1
 
 #Just used to debug my key presses
 def PrintCurrentKey(Key, Pressed):
