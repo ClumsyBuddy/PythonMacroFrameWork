@@ -46,7 +46,7 @@ class LogicThread(QtCore.QThread):
     def __init__(self):
         QtCore.QThread.__init__(self)
         self.ExitMainLoop = None
-        self._input = Input_Logic(['e', 'i'], ['esc', 'o'])
+        #self._input = Input_Logic(['e', 'i'], ['esc', 'o'])
     #This get run first, anything that needs to be initialized can be put in here
     def run(self):
         self.ExitMainLoop = False

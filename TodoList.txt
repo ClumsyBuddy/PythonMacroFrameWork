@@ -1,9 +1,3 @@
-HUGE REWORK:
-Rework all none game specific code into modules to use in multiple macros so specific macro scripts can be made using the framework
-
-
-
-
 
 Post Message doesnt work on most windows, need to find a solution
 
@@ -14,4 +8,6 @@ Currently doing:
 Add keyboard input sending
 create timer based clicking so it doesnt send 1000 clicks in a second
 Start updating UI
-URGENT::::Rework logic so user only needs to access InputLogic Class and nothing else
+Need some testing
+Need exception handling
+need documentation for entire package
