@@ -1,22 +1,14 @@
-from .InputKeyBoard import KeyBoardController as _KeyboardController
-from .InputMouse import MouseController as _mouse
-from .Utility import UtilityFunctions as utility
-
-import time
 import keyboard as _keyboard
-import random
 
 ##This class Handles all of the input. WIP I want to add more functionality
 class Input_Handler():
-	def __init__(self):
+	def __init__(self, CharKeys, HeldKeys):
 		self.StopInput = False
-		self.CharKeys = ['e', 'i', 'y']
-		self.HeldKeys = ['esc', 'o']
+		self.CharKeys = CharKeys
+		self.HeldKeys = HeldKeys
 		self.KeyBool = []
 		self.KeyToggles = []
 		self.InitInput()
-		self.MousePos = []
-		self.TempCounter = 0
 #Initialize the Keybool with the amount of keys int he Key Char list
 	def InitInput(self):
 		for Key in range(len(self.CharKeys)):
@@ -27,6 +19,10 @@ class Input_Handler():
 		#if it hasnt been pressed recently then perform a PostKeyPress action with the key
 		#if the key has been pressed and then released perform a PostKeyRelease Action with the key
 		#if the key is Esc thats used for closing input
+
+	def UpdateInputHandler(self):
+		self.HandleInput()
+
 	def HandleInput(self):
 		#If the key is a key to be held down then send it to the KeyHeldDown Function
 		for Held in range(len(self.HeldKeys)):
@@ -53,22 +49,10 @@ class Input_Handler():
 
 	#Logic after knowning which key has been pressed
 	def PostKeyPress(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
-		if CurrentKey == 'e':
-			#self.KeyToggles[t] = not self.KeyToggles[t]
-			self.MousePos.append(_mouse.ReturnCursorPosition())
-			print(self.MousePos)
-		if CurrentKey == 'i':
-			self.KeyToggles[t] = not self.KeyToggles[t]
-			#self.MousePos = list(_mouse.ReturnCursorPosition())
-			#print(self.MousePos)
+		pass
 
 	def PostKeyRelease(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
-		if CurrentKey == 'e':
-			pass
-		if CurrentKey == 'i':
-			#self.TakeAScreenShot()
-			pass
-
+		pass
 
 #Simple functino that checks if the key has been pressed
 	def CheckForKeyPress(self, Key):
@@ -87,26 +71,11 @@ class Input_Handler():
 	#Simeple get function for StopInput to let the Logicthread know if its time to break for input loop
 	def ContinueInput(self):
 		return self.StopInput
-	#Temp function to handle Toggle Logic
+
 	def KeyToggleLogic(self):
 		for Key in range(len(self.KeyToggles)):
 			if self.KeyToggles[Key]:
 				if self.CharKeys[Key] == 'e':
-					#print("Looping E Key")
-					print(_KeyboardController.char2key('e'))
+					pass
 				if self.CharKeys[Key] == 'i':
-					time.sleep(.50)
-					Pos = utility.LocateAmountOfImageOnScreen('CopperOre.PNG')
-					if len(Pos) == 27:
-						pass
-					else:
-						rand = random
-					#_mouse.WinClickAndReturn(Pos[0], Pos[1])
-
-
-#Just used to debug my key presses
-def PrintCurrentKey(Key, Pressed):
-	if Pressed == True:
-		print(Key + " Pressed")
-	else:
-		print(Key + " Released")
+					pass

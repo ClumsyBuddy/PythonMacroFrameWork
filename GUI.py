@@ -2,7 +2,7 @@ import sys, time
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
 from PyQt5 import QtCore
 import ButtonGui as _button
-from MacroModules.InputHandling.InputHandler import Input_Handler
+from MacroModules.InputLogic import Input_Logic
 #pyQt5 gui
 #CReates a thread so other threads must be created here to perform loop logic
 class AppGUI(QWidget):
@@ -46,7 +46,7 @@ class LogicThread(QtCore.QThread):
     def __init__(self):
         QtCore.QThread.__init__(self)
         self.ExitMainLoop = None
-        self._input = Input_Handler()
+        self._input = Input_Logic(['e', 'i'], ['esc', 'o'])
     #This get run first, anything that needs to be initialized can be put in here
     def run(self):
         self.ExitMainLoop = False
@@ -57,8 +57,7 @@ class LogicThread(QtCore.QThread):
     def MainLoop(self):
         while self.ExitMainLoop == False:
             self.ExitMainLoop = self._input.ContinueInput() #Check if input should be continued
-            self._input.HandleInput() #Go to inputhandler to handle all of our input needs
-            self._input.KeyToggleLogic()
+            self._input.UpdateInputHandler()
         print("Input Has Been Stopped")
 
     #def __del__(self): #Close thread fuinction, waits for thread to finish before closing it out
