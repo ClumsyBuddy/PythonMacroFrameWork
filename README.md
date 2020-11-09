@@ -10,7 +10,7 @@ from MacroModules.InputLogic import Input_Logic
 1. Create a class that inherits from Input_Logic
 2. Override main key handling functions
 
-'''
+```
 class Example(Input_Logic):
 		def __init__():
 			super().__init__()
@@ -26,6 +26,6 @@ class Example(Input_Logic):
 					pass
 		def PostKeyRelease(self, Key, t):
 			pass
-'''
+```
 There are more Functions you can override but these are the mains one
 Use functions from SendMouse or SendKeyboard to send Input to the screen
