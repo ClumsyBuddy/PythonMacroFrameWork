@@ -2,8 +2,7 @@ import sys, time
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
 from PyQt5 import QtCore
 import ButtonGui as _button
-import InputHandler
-import MouseController as _mouse
+from InputContainer import InputHandler
 #pyQt5 gui
 #CReates a thread so other threads must be created here to perform loop logic
 class AppGUI(QWidget):
