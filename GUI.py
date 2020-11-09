@@ -2,7 +2,7 @@ import sys, time
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
 from PyQt5 import QtCore
 import ButtonGui as _button
-from InputContainer import InputHandler
+from MacroModules.InputHandling.InputHandler import Input_Handler
 #pyQt5 gui
 #CReates a thread so other threads must be created here to perform loop logic
 class AppGUI(QWidget):
@@ -46,7 +46,7 @@ class LogicThread(QtCore.QThread):
     def __init__(self):
         QtCore.QThread.__init__(self)
         self.ExitMainLoop = None
-        self._input = InputHandler.Input_Handler()
+        self._input = Input_Handler()
     #This get run first, anything that needs to be initialized can be put in here
     def run(self):
         self.ExitMainLoop = False

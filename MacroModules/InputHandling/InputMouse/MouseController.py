@@ -1,7 +1,6 @@
 import pyautogui as auto
 import win32api, win32con, win32gui
 import time
-from Utility import UtilityFunctions as utility
 
 
 #Needs to be redone

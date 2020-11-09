@@ -1,5 +1,7 @@
-from InputContainer.MouseController import  MouseController as _mouse
-import Utility as utility
+from .InputKeyBoard import KeyBoardController as _KeyboardController
+from .InputMouse import MouseController as _mouse
+from .Utility import UtilityFunctions as utility
+
 import time
 import keyboard as _keyboard
 import random
