@@ -1,8 +1,8 @@
 from MacroModules.InputLogic import Input_Logic
-#from MacroModules.InputHandling import InputKeyBoard
-#from MacroModules.InputHandling import InputMouse
-#from MacroModules.InputHandling import Utility
-from MacroModules import InputHandling
+from MacroModules.InputHandling.InputKeyBoard import KeyBoardController as _keyboard
+from MacroModules.InputHandling.InputMouse import MouseController as _mouse
+from MacroModules.InputHandling.Utility import UtilityFunctions as _utility
+#from MacroModules import InputHandling
 
 
 class MinerScript(Input_Logic):
@@ -16,6 +16,10 @@ class MinerScript(Input_Logic):
 	def PostKeyPress(self, Key, t):
 		if Key == 'e':
 			self.KeyToggles[t] = not self.KeyToggles[t]
+		if Key == 'i':
+			self.MousePos.append(_mouse.ReturnCursorPosition())
+			print(self.MousePos)
+
 
 
 	def KeyToggleLogic(self):
@@ -31,10 +35,11 @@ class MinerScript(Input_Logic):
 def main():
 	Script = MinerScript(['e', 'i'], ['esc'])
 	ExitLoop = False
-	
+
 	while ExitLoop == False:
 		Script.UpdateInputHandler()
 		ExitLoop = Script.ContinueInput()
+	print("Exiting App")
 
 
 

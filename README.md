@@ -4,8 +4,12 @@ Frame work for making macros in python, including Image based recognition, Mouse
 
 
 To Start with the framework simply:
+```
 from MacroModules.InputLogic import Input_Logic
-
+from MacroModules.InputHandling.InputKeyBoard import KeyBoardController as _keyboard
+from MacroModules.InputHandling.InputMouse import MouseController as _mouse
+from MacroModules.InputHandling.Utility import UtilityFunctions as _utility
+```
 
 1. Create a class that inherits from Input_Logic
 2. Override main key handling functions

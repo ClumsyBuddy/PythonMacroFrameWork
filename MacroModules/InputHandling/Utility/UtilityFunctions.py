@@ -30,7 +30,8 @@ def ReturnXY(List):
 
 
 def FindPixelRGB(Color):
-	auto.FindPixelRGB(Color)
+	return auto.FindPixelRGB(Color)
+
 
 
 #Take a screenshot of the Region and give it a default name or name provided
