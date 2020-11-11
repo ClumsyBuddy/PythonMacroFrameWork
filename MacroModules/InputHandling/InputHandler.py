@@ -1,4 +1,5 @@
 import keyboard as _keyboard
+import mouse as _mouse
 
 ##This class Handles all of the input. WIP I want to add more functionality
 class Input_Handler():
@@ -20,10 +21,15 @@ class Input_Handler():
 		#if the key has been pressed and then released perform a PostKeyRelease Action with the key
 		#if the key is Esc thats used for closing input
 
-	def UpdateInputHandler(self):
-		self.HandleInput()
+	def UpdateInput(self, k = True):
+		if k == True:
+			self.HandleKeyBoardInput()
 
-	def HandleInput(self):
+	def HandleMoueInput(self):
+		if self.CheckMousePress('left'):
+			self.MouseHeldDown()
+
+	def HandleKeyBoardInput(self):
 		#If the key is a key to be held down then send it to the KeyHeldDown Function
 		for Held in range(len(self.HeldKeys)):
 			if self.CheckForKeyPress(self.HeldKeys[Held]):
@@ -40,8 +46,10 @@ class Input_Handler():
 					self.PostKeyRelease(self.CharKeys[Key], Key)
 					self.KeyBool[Key] = False
 
+	def MouseHeldDown(self):
+		pass
 	#Function to handle keys that are excepted to be held down
-	def KeyHeldDown(self, CurrentKey):
+	def KeyHeldDown(self, CurrentKey, m = False):
 		if CurrentKey == 'esc':
 			self.StopInput = True
 		if CurrentKey == 'o':
@@ -54,6 +62,13 @@ class Input_Handler():
 	def PostKeyRelease(self, CurrentKey, t): #t allows the toggle of the current key to turn on some logic
 		pass
 
+
+	def CheckMousePress(self, MouseButton = 'left'):
+		if _mouse.is_pressed(MouseButton):
+			return True
+		else:
+			return False
+		
 #Simple functino that checks if the key has been pressed
 	def CheckForKeyPress(self, Key):
 		if _keyboard.is_pressed(Key):

@@ -3,41 +3,57 @@ from MacroModules.InputHandling.InputKeyBoard import KeyBoardController as _keyb
 from MacroModules.InputHandling.InputMouse import MouseController as _mouse
 from MacroModules.InputHandling.Utility import UtilityFunctions as _utility
 #from MacroModules import InputHandling
-
+import time
 
 class MinerScript(Input_Logic):
 	def __init__(self, CharKeys, HeldKeys):
 		super().__init__(CharKeys, HeldKeys)
 
 
+	def KeyHeldDown(self, CurrentKey):
+		if CurrentKey == 'esc':
+			#self.StopInput = True
+			pass
+		if CurrentKey == 'o':
+			_keyboard.KeyboardInput('w')
+			print("Should be moving")
 
 
 
-	def PostKeyPress(self, Key, t):
+	def PostKeyRelease(self, Key, t):
 		if Key == 'e':
 			self.KeyToggles[t] = not self.KeyToggles[t]
+			print("Toggle Key")
+			print(self.KeyToggles[t])
+			pass
 		if Key == 'i':
-			self.MousePos.append(_mouse.ReturnCursorPosition())
-			print(self.MousePos)
+			self.StopInput = True
+		if Key == 'j':
+			self.KeyToggles[t] = not self.KeyToggles[t]
 
+	def MouseHeldDown(self):
+		_mouse.MoveMouse(None, 50)
+		print("Moved Mouse Down")
 
 
 	def KeyToggleLogic(self):
 		for Key in range(len(self.KeyToggles)):
 			if self.KeyToggles[Key]:
 				if self.CharKeys[Key] == 'e':
-					print("hello")
+					self.HandleMoueInput()
 				if self.CharKeys[Key] == 'i':
 					pass
+				if self.CharKeys[Key] == 'j':
+					_keyboard.KeyboardInput('w')
 
 
 
 def main():
-	Script = MinerScript(['e', 'i'], ['esc'])
+	Script = MinerScript(['e', 'i', 'j'], ['o'])
 	ExitLoop = False
 
 	while ExitLoop == False:
-		Script.UpdateInputHandler()
+		Script.UpdateInputHandler(True, 0)
 		ExitLoop = Script.ContinueInput()
 	print("Exiting App")
 

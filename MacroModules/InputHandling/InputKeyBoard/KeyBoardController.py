@@ -1,8 +1,8 @@
 import keyboard
 import win32gui, win32api, win32con
 import time
-import pyautogui as auto
-
+import pydirectinput as auto
+import ctypes
 
 #Take a char key and translate it to a windows keycode
 def char2key(c):
@@ -11,7 +11,7 @@ def char2key(c):
 
 #Send a key to a window via windows apli
 def SendKeyToWindow(Key, Speed):
-	pass
+	code = char2key(Key)
 
 def KeyboardInput(Key):
 	auto.press(Key)
