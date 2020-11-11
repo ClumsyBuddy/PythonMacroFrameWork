@@ -4,6 +4,9 @@ Post Message doesnt work on most windows, need to find a solution
 Need Signals between threads
 
 
+URGENT::: Need to added directinput support through using ctypes, mouse_event is deprecated along with keyboardevent
+use sendinput. Need to refactor mouse input functions as they are clumsy
+
 Currently doing:
 Add keyboard input sending
 create timer based clicking so it doesnt send 1000 clicks in a second
