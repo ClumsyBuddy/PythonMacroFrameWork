@@ -33,3 +33,6 @@ class Example(Input_Logic):
 ```
 There are more Functions you can override but these are the mains one
 Use functions from SendMouse or SendKeyboard to send Input to the screen
+
+This framework is WIP, I will be fleshing out the classes so that it's more user-friendly. 
+Possible rewrite of the input handler to allow more combinations of how input can be handled.
